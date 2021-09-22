@@ -11,6 +11,12 @@ describe('Room class', function() {
     room2 = new Room(data.rooms[1], data.roomImgs);
   })
 
+  it('should be a function', function() {
+    assert.isFunction(Room);
+    assert.instanceOf(room1, Room);
+    assert.instanceOf(room2, Room);
+  })
+
   it('should have a number', function() {
     assert.isNumber(room1.number);
     assert.isNumber(room2.number);

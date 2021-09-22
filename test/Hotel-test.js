@@ -51,4 +51,9 @@ describe('Hotel class', function() {
     assert.instanceOf(hotel.getAvailableRooms()[0], Room);
     assert.isArray(hotel.getAvailableRooms());
   })
+
+  it('should give an apology if there\'s no available rooms', function() {
+    //Write some code to not have available rooms.
+    assert.equal(hotel.hotel.getAvailableRooms(), 'We are very sorry, there is not an available room for this dates')
+  })
 })
