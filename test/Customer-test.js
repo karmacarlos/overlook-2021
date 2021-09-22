@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import { assert } from 'chai';
 
-import { data } from './data-test'; 
+import data from './data-test'; 
 
-import { Customer } from '../src/classes/customer';
+import Customer from '../src/classes/customer';
 
 describe('Customer class', function() {
   let customer1, customer2;

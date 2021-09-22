@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 import { assert } from 'chai';
 
-import { data } from './data-test';
+import data from './data-test';
 
-import { Hotel } from '../src/classes/hotel';
+import Hotel from '../src/classes/hotel';
 
-import { Room } from '../src/classes/room'
+import Room from '../src/classes/room';
 
 describe('Hotel class', function() {
   let hotel;

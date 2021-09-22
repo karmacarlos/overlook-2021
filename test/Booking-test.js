@@ -1,14 +1,14 @@
 import { assert } from 'chai';
 
-import { data } from './data-test'; 
+import data from './data-test'; 
 
-import { Booking } from '../src/classes/booking';
+import Booking from '../src/classes/booking';
 
 describe('Booking class', function() {
   let booking1, booking2;
   beforeEach(function() {
-    booking1 = new Booking(1, '09/30/2021to10/07/2021', 14);
-    booking2 = new Booking(2, '10/02/2021to10/8/2021', 25);
+    booking1 = new Booking(1, '09/30/2021', 7, 14);
+    booking2 = new Booking(2, '10/02/2021', 4, 25);
   })
 
   it('should be a function', function() {
@@ -27,9 +27,9 @@ describe('Booking class', function() {
     assert.equal(booking2.checkIn, '10/02/2021');
   })
 
-  it('should contain the checkout date', function() {
-    assert.equal(booking1.checkOut, '10/07/2021');
-    assert.equal(booking2.checkOut, '10/8/2021');
+  it('should contain the number of nights', function() {
+    assert.equal(booking1.numberOfNights, 7);
+    assert.equal(booking2.numberOfNights, 4);
   })
 
   it('should contain the room number', function() {
