@@ -5,16 +5,16 @@ import { data } from './data-test';
 
 import { Manager } from '../src/classes/manager';
 
-import { Hotel } from '../src/classes/hotel'
+import { Customer } from '../src/classes/customer'
 
 describe('Manager class', function() {
   let manager;
   beforeEach(function() {
-    manager = new Manager(data.rooms, data.bookings, data.customers, data.roomImgs);
+    manager = new Manager('manager');
   })
 
   it('should extend from the hotel class', function() {
-    assert.instanceOf(Manager.prototype, Hotel);
+    assert.instanceOf(Manager.prototype, Customer);
   })
 
   it('should have an username', function() {
