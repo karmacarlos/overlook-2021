@@ -7,10 +7,10 @@ import Hotel from '../src/classes/hotel';
 
 import Room from '../src/classes/room';
 
-describe('Hotel class', function() {
+describe.only('Hotel class', function() {
   let hotel;
   beforeEach( function() {
-    hotel = new Hotel(data.rooms, data.bookings, data.customers, data.roomImgs)
+    hotel = new Hotel(data.rooms, data.bookings, data.customers, data.roomImgs);
   })
   it('should be a function', function() {
     assert.isFunction(Hotel);
@@ -40,20 +40,26 @@ describe('Hotel class', function() {
   it('should be able to prepare the rooms to be displayed', function() {
     hotel.prepareRooms();
     assert.equal(hotel.roomsToDisplay.length, data.rooms.length);
-    assert.include(hotel.roomsToDisplay[0].image, 'https');
+    assert.instanceOf(hotel.roomsToDisplay[0], Room);
+    assert.equal(hotel.roomsToDisplay[0].image, data.roomImgs[0].imageUrl);
   })
 
   it('should be able to choose a random customer', function() {
     assert.isObject(hotel.getRandomCustomer(), 'is an object');
   })
 
-  it('should be able to return all available rooms', function() {
-    assert.instanceOf(hotel.getAvailableRooms()[0], Room);
-    assert.isArray(hotel.getAvailableRooms());
+  it('should be able to get a list of dates between checkin and checkout date', function() {
+    assert.equal(hotel.getDates('2021/09/30', '2021/10/08').length, 8);
+  })
+
+  it('should be able to return all available rooms on a series of nights', function() {
+    hotel.prepareRooms();
+    assert.equal(hotel.getAvailableRooms('2021/09/30', '2021/10/01').length, 9);
+    assert.instanceOf(hotel.getAvailableRooms('2021/09/30', '2021/10/08')[0], Room);
+    assert.isArray(hotel.getAvailableRooms('2021/09/30', '2021/10/04'));
   })
 
   it('should give an apology if there\'s no available rooms', function() {
-    //Write some code to not have available rooms.
-    assert.equal(hotel.hotel.getAvailableRooms(), 'We are very sorry, there is not an available room for this dates')
+    assert.equal(hotel.getAvailableRooms(), 'We are very sorry, there is not an available room for this dates')
   })
 })

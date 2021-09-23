@@ -4,7 +4,7 @@ import data from './data-test';
 
 import Room  from '../src/classes/room';
 
-describe.only('Room class', function() {
+describe('Room class', function() {
   let room1, room2;
   beforeEach(function () {
     room1 = new Room(data.rooms[0]);
