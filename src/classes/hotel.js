@@ -49,7 +49,7 @@ class Hotel {
       }
       return acc;
     }, [])
-
+     
     if (!availableRooms.length) {
       return 'We are very sorry, there is not an available room for this dates';
     }
