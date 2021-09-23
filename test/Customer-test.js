@@ -4,7 +4,7 @@ import data from './data-test';
 import Customer from '../src/classes/customer';
 import Hotel from '../src/classes/hotel';
 
-describe.only('Customer class', function() {
+describe('Customer class', function() {
   let customer1, customer2, hotel;
   beforeEach( function() {
     hotel = new Hotel(data.rooms, data.bookings, data.customers, data.roomImgs);

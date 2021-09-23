@@ -12,6 +12,7 @@ describe('Hotel class', function() {
   beforeEach( function() {
     hotel = new Hotel(data.rooms, data.bookings, data.customers, data.roomImgs);
   })
+  
   it('should be a function', function() {
     assert.isFunction(Hotel);
     assert.instanceOf(hotel, Hotel);
