@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
-import Room from "./room";
-const dayjs = require('dayjs');
-
+import Room from './room';
+import dayjs from 'dayjs';
 
 class Hotel {
   constructor(rooms, bookings, customers, roomImgs) {
