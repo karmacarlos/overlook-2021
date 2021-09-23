@@ -4,13 +4,93 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karma:wght@400;600&family=Prata&display=swap" rel="stylesheet">
+  <title>City Hotel</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <header>
+    <nav class="navbar">
+      <a href="#">
+        <h1 class="header-logo">City<br>Hotel</h1>
+      </a>
+      <div class="right-container">
+        <ul class="nav__links">
+          <li class="nav__items1" id="logOut"><button>LOG OUT</button></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <section id="mainContainer" class="main-container">
+    <section id="inputBooking" class="main-container__new-booking">
+      <h2>Book your next stay</h2>
+      <section id="formContainer" class="main-container__new-booking__form">
+        <form name="datesInput">
+          <div id="checkInInput">
+            <label for="dayIn"> Day </label>
+            <input id="dayIn" name="dayI" type="number" step="1" min="0" max="31" required="true">
+            <label for="monthIn"> Month </label>
+            <input id="monthIn" name="monthI" type="number" step="1" min="1" max="12" required="true">
+            <label for="yearIn">Year</label>
+            <select id="yearIn" name="yearI" required="true">
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
+          <div id="checkOutInput">
+            <label for="dayOut"> Day </label>
+            <input id="dayOut" name="dayO" type="number" step="1" min="0" max="31" required="true">
+            <label for="monthOut"> Month </label>
+            <input id="monthOut" name="monthO" type="number" step="1" min="1" max="12" required="true">
+            <label for="yearOut">Year</label>
+            <select id="yearOut" name="yearO" required="true">
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
+          <input type="submit" value="Check Availability">
+        </form>
+      </section>
+      <section id="myBookings" class="main-container__new-booking__bookings">
+        <h2>My Bookings</h2>
+        <section id="indBookings" class="booking-list"></section>
+        <h4 id="totalSpent"></h4>
+      </section>
+    </section>
+    <section id="availableRooms" class="main-container__rooms">
+      <section id="roomFeatures" class="main-container__rooms__tags">
+        <form name="roomFeaturesInput">
+          <input type="radio" id="suite" name="roomType" value="suite">
+            <label for="suite">Suite</label>
+          <input type="radio" id="residentialSuite" name="roomType" value="residential suite">
+            <label for="eresidentialSuite">Residential Suite</label>
+          <input type="radio" id="singleRoom" name="roomType" value="single room">
+            <label for="singleRoom">Single Room</label>
+          <input type="radio" id="juniorSuite" name="roomType" value="junior suite">
+            <label for="juniorSuite">Junior Suite</label>
+          <input type="radio" id="king" name="bedSize" value="king">
+            <label for="king">King</label>
+          <input type="radio" id="queen" name="bedSize" value="queen">
+            <label for="queen">Queen</label>
+          <input type="radio" id="twin" name="bedSize" value="twin">
+            <label for="twin">Twin</label>
+          <input type="radio" id="full" name="bedSize" value="full">
+            <label for="full">Full</label> 
+          <input type="radio" id="oneBed" name="numBeds" value="1">
+            <label for="oneBed">1 Bed</label>
+          <input type="radio" id="twoBeds" name="numBeds" value="2">
+            <label for="twoBeds">2 Beds</label> 
+          <input type="radio" id="bidet" name="bidet" value="bidet">
+            <label for="bidet">Bidet</label>           
+        </form>
+      </section>
+      <section id="roomDisplay" class="main-container__rooms__pool"></section>
+    </section>
+    <section>
 
+    </section>
+  </section>
+  <script src="bundle.js"></script>
 </body>
 </html>
