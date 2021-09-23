@@ -7,7 +7,7 @@ import Hotel from '../src/classes/hotel';
 
 import Room from '../src/classes/room';
 
-describe.only('Hotel class', function() {
+describe('Hotel class', function() {
   let hotel;
   beforeEach( function() {
     hotel = new Hotel(data.rooms, data.bookings, data.customers, data.roomImgs);
