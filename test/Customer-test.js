@@ -52,6 +52,9 @@ describe.only('Customer class', function() {
   })
 
   it('should be able to calculate how much has been spent on bookings', function() {
-    assert.isNumber(customer1.getSpentAmount());
+    customer1.getBookings(hotel);
+    customer1.getSpentAmount(hotel);
+    assert.isNumber(customer1.getSpentAmount(hotel));
+    assert.equal(customer1.getSpentAmount(hotel), 1062.77);
   })
 })
