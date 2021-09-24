@@ -87,8 +87,22 @@
       </section>
       <section id="roomDisplay" class="main-container__rooms__pool"></section>
     </section>
-    <section>
-
+    <section id="logInBox" class="main-container__log-in">
+      <form name="log-in">
+        <label for=“userName”>Username</label>
+        <input type="text" id="username" name="username" required="true">
+        <label for=“password”>Password</label>
+        <input type=“password” id=“password” name=“user-password” required="true">
+        <input type="submit" value="LOG IN">
+      </form>
+    </section>
+    <section id="roomRender" class="main-container__room-render">
+      <div class="main-container__room-render__room">
+        <img src="room-picture">
+        <article>details</article>
+        <article>dates</article>
+        <button>Book Room</button>
+      </div>
     </section>
   </section>
   <script src="bundle.js"></script>
