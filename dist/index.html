@@ -24,41 +24,57 @@
   </header>
   <section id="mainContainer" class="main-container">
     <section id="inputBooking" class="main-container__new-booking">
-      <h2>Book your next stay</h2>
       <section id="formContainer" class="main-container__new-booking__form">
+        <h2>Book your next stay</h2>
         <form name="datesInput">
-          <div id="checkInInput">
-            <label for="dayIn"> Day </label>
-            <input id="dayIn" name="dayI" type="number" step="1" min="0" max="31" required="true">
-            <label for="monthIn"> Month </label>
-            <input id="monthIn" name="monthI" type="number" step="1" min="1" max="12" required="true">
-            <label for="yearIn">Year</label>
-            <select id="yearIn" name="yearI" required="true">
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-            </select>
+          <h3>Check in date:</h3>
+          <div id="checkInInput" class="checkin-input">
+            <div>
+              <label for="dayIn"> Day </label>
+              <input id="dayIn" name="dayI" type="number" step="1" min="0" max="31" required="true">
+            </div>
+            <div>
+              <label for="monthIn"> Month </label>
+              <input id="monthIn" name="monthI" type="number" step="1" min="1" max="12" required="true">
+            </div>
+            <div>
+              <label for="yearIn">Year</label>
+              <select id="yearIn" name="yearI" required="true">
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+              </select>
+            </div>
           </div>
-          <div id="checkOutInput">
-            <label for="dayOut"> Day </label>
-            <input id="dayOut" name="dayO" type="number" step="1" min="0" max="31" required="true">
-            <label for="monthOut"> Month </label>
-            <input id="monthOut" name="monthO" type="number" step="1" min="1" max="12" required="true">
-            <label for="yearOut">Year</label>
-            <select id="yearOut" name="yearO" required="true">
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-            </select>
+          <h3>Check out date:</h3>
+          <div id="checkOutInput" class="checkout-input">
+            <div>
+              <label for="dayOut"> Day </label>
+              <input id="dayOut" name="dayO" type="number" step="1" min="0" max="31" required="true">
+            </div>
+            <div>
+              <label for="monthOut"> Month </label>
+              <input id="monthOut" name="monthO" type="number" step="1" min="1" max="12" required="true">
+            </div>
+            <div>
+              <label for="yearOut">Year</label>
+              <select id="yearOut" name="yearO" required="true">
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+              </select>
+            </div>
           </div>
-          <input type="submit" value="Check Availability">
+          
+          <input type="submit" value="Check Availability" class="submit">
+          
         </form>
       </section>
       <section id="myBookings" class="main-container__new-booking__bookings">
         <h2>My Bookings</h2>
         <section id="indBookings" class="booking-list"></section>
-        <h4 id="totalSpent"></h4>
+        <h4 id="totalSpent">$Many dollars.</h4>
       </section>
     </section>
-    <section id="availableRooms" class="main-container__rooms">
+    <section id="availableRooms" class="main-container__rooms hidden">
       <section id="roomFeatures" class="main-container__rooms__tags">
         <form name="roomFeaturesInput">
           <input type="radio" id="suite" name="roomType" value="suite">
@@ -87,7 +103,7 @@
       </section>
       <section id="roomDisplay" class="main-container__rooms__pool"></section>
     </section>
-    <section id="logInBox" class="main-container__log-in">
+    <section id="logInBox" class="main-container__log-in hidden">
       <form name="log-in">
         <label for=“userName”>Username</label>
         <input type="text" id="username" name="username" required="true">
@@ -96,9 +112,9 @@
         <input type="submit" value="LOG IN">
       </form>
     </section>
-    <section id="roomRender" class="main-container__room-render">
+    <section id="roomRender" class="main-container__room-render hidden">
       <div class="main-container__room-render__room">
-        <img src="room-picture">
+        <img>
         <article>details</article>
         <article>dates</article>
         <button>Book Room</button>
