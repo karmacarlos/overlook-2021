@@ -4,13 +4,87 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karma:wght@400;600&family=Prata&display=swap" rel="stylesheet">
+  <title>City Hotel</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <header>
+    <nav class="navbar">
+      <a href="#">
+        <h1 class="header-logo">City<br>Hotel</h1>
+      </a>
+      <div class="right-container">
+        <ul class="nav__links">
+          <li class="nav__items1" id="logOut"><button>LOG OUT</button></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <section id="mainContainer" class="main-container">
+    <section id="inputBooking" class="main-container__new-booking hidden">
+      <section id="formContainer" class="main-container__new-booking__form">
+        <h2>Book your next stay</h2>
+        <form name="datesInput">
+          <h3>Check in date:</h3>
+          <div id="checkInInput" class="checkin-input">
+            <div>
+              <input type="date" id="checkInDate" name="trip-start" value="2021-09-25" min="2021-09-25" max="2022-12-12">
+            </div>
+          </div>
+          <h3>Check out date:</h3>
+          <div id="checkOutInput" class="checkout-input">
+            <div>
+              <input type="date" id="checkOutDate" name="trip-ends" value="2021-09-25"  min="2021-09-25" max="2022-12-12">
+            </div>
+          </div>
+            <input type="submit" value="Check Availability" class="submit">
+        </form>
+      </section>
+      <section id="checkOutInput" class="main-container__new-booking__bookings">
+        <h2>My Bookings</h2>
+        <section id="indBookings" class="booking-list"></section>
+        <h4 id="totalSpent">$Many dollars.</h4>
+      </section>
+    </section>
+    <section id="availableRooms" class="main-container__rooms hidden">
+      <section id="roomFeatures" class="main-container__rooms__tags">
+        <form name="roomFeaturesInput">
+          <input type="checkbox" id="suite" name="tag" value="suite">
+            <label for="suite" class="label">Suite</label>
+          <input type="checkbox" id="residentialSuite" name="tag" value="residential suite">
+            <label for="residentialSuite">Residential Suite</label>
+          <input type="checkbox" id="singleRoom" name="tag" value="single room">
+            <label for="singleRoom">Single Room</label>
+          <input type="checkbox" id="juniorSuite" name="tag" value="junior suite">
+            <label for="juniorSuite">Junior Suite</label>         
+        </form>
+      </section>
+      <section id="roomDisplay" class="main-container__rooms__pool"></section>
+    </section>
+    <section class="main-container__log-in hidden" >
+      <section id="logInBox" class="main-container__log-in__box">
+        <form name="log-in" class="log-in-form">
+          <label for=“userName”>Username</label>
+          <input type="text" id="username" name="username" required="true">
+          <label for=“password”>Password</label>
+          <input type=“password” id=“password” name=“user-password” required="true">
+          <input type="submit" value="LOG IN">
+        </form>
+    </section>
+    </section>
+    <section id="roomRender" class="main-container__room-render ">
+      <section class="main-container__room-render__room">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJY33LJ7ApNAV83pP5PBVzZXhwn1vMZTjM8w&usqp=CAU">
+        <article>Bidet / 2 Beds / Queen Bed / $340.00 per night</article>
+        <article>09/30/2021 to 10/04/2021</article>
+        <article>Booking Total: $1500</article>
+        <button>Book Room</button>
+        <button>Back to rooms</button>
+      </section>
+    </section>
+  </section>
   <script src="bundle.js"></script>
-
 </body>
 </html>
