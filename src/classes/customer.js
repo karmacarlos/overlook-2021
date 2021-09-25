@@ -23,7 +23,7 @@ class Customer {
         acc += room.costPerNight;
       }
       return acc;
-    }, 0)
+    }, 0).toFixed(2);
     return spentAmount;
   }
 }

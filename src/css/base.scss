@@ -7,6 +7,11 @@ html {
   @include flex-column()
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
 body {
   background-image: $primary-background;
   // background-size: cover;
@@ -65,6 +70,7 @@ nav {
   width: 30vw;
   height: 55vh;
   @include flex-column();
+  opacity: .9;;
   justify-content: flex-start;
   align-items: center;
   background-color: $pastel;
@@ -73,6 +79,15 @@ nav {
   box-shadow: rgba(45, 26, 26, 0.56) 0px 22px 50px 4px;
   h3 {
     padding-left: 1vw;
+  }
+}
+
+.booking-list {
+  max-height: 38vh;
+  --contentHeight: 35vh;
+  overflow: scroll;
+  p {
+    max-height: 2px;
   }
 }
 
@@ -174,6 +189,7 @@ nav {
   img {
     height: 30vh;
     width: 30vw;
+    border-radius: 7px 7px 0 0;
   }
   article {
     margin: 2vh 2vh 0 2vh;
