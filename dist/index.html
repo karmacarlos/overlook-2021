@@ -23,52 +23,26 @@
     </nav>
   </header>
   <section id="mainContainer" class="main-container">
-    <section id="inputBooking" class="main-container__new-booking">
+    <section id="inputBooking" class="main-container__new-booking hidden">
       <section id="formContainer" class="main-container__new-booking__form">
         <h2>Book your next stay</h2>
         <form name="datesInput">
           <h3>Check in date:</h3>
           <div id="checkInInput" class="checkin-input">
             <div>
-              <label for="dayIn"> Day </label>
-              <input id="dayIn" name="dayI" type="number" step="1" min="0" max="31" required="true">
-            </div>
-            <div>
-              <label for="monthIn"> Month </label>
-              <input id="monthIn" name="monthI" type="number" step="1" min="1" max="12" required="true">
-            </div>
-            <div>
-              <label for="yearIn">Year</label>
-              <select id="yearIn" name="yearI" required="true">
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-              </select>
+              <input type="date" id="checkInDate" name="trip-start" value="2021-09-25" min="2021-09-25" max="2022-12-12">
             </div>
           </div>
           <h3>Check out date:</h3>
           <div id="checkOutInput" class="checkout-input">
             <div>
-              <label for="dayOut"> Day </label>
-              <input id="dayOut" name="dayO" type="number" step="1" min="0" max="31" required="true">
-            </div>
-            <div>
-              <label for="monthOut"> Month </label>
-              <input id="monthOut" name="monthO" type="number" step="1" min="1" max="12" required="true">
-            </div>
-            <div>
-              <label for="yearOut">Year</label>
-              <select id="yearOut" name="yearO" required="true">
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-              </select>
+              <input type="date" id="checkOutDate" name="trip-ends" value="2021-09-25"  min="2021-09-25" max="2022-12-12">
             </div>
           </div>
-          
-          <input type="submit" value="Check Availability" class="submit">
-          
+            <input type="submit" value="Check Availability" class="submit">
         </form>
       </section>
-      <section id="myBookings" class="main-container__new-booking__bookings">
+      <section id="checkOutInput" class="main-container__new-booking__bookings">
         <h2>My Bookings</h2>
         <section id="indBookings" class="booking-list"></section>
         <h4 id="totalSpent">$Many dollars.</h4>
@@ -77,48 +51,38 @@
     <section id="availableRooms" class="main-container__rooms hidden">
       <section id="roomFeatures" class="main-container__rooms__tags">
         <form name="roomFeaturesInput">
-          <input type="radio" id="suite" name="roomType" value="suite">
-            <label for="suite">Suite</label>
-          <input type="radio" id="residentialSuite" name="roomType" value="residential suite">
-            <label for="eresidentialSuite">Residential Suite</label>
-          <input type="radio" id="singleRoom" name="roomType" value="single room">
+          <input type="checkbox" id="suite" name="tag" value="suite">
+            <label for="suite" class="label">Suite</label>
+          <input type="checkbox" id="residentialSuite" name="tag" value="residential suite">
+            <label for="residentialSuite">Residential Suite</label>
+          <input type="checkbox" id="singleRoom" name="tag" value="single room">
             <label for="singleRoom">Single Room</label>
-          <input type="radio" id="juniorSuite" name="roomType" value="junior suite">
-            <label for="juniorSuite">Junior Suite</label>
-          <input type="radio" id="king" name="bedSize" value="king">
-            <label for="king">King</label>
-          <input type="radio" id="queen" name="bedSize" value="queen">
-            <label for="queen">Queen</label>
-          <input type="radio" id="twin" name="bedSize" value="twin">
-            <label for="twin">Twin</label>
-          <input type="radio" id="full" name="bedSize" value="full">
-            <label for="full">Full</label> 
-          <input type="radio" id="oneBed" name="numBeds" value="1">
-            <label for="oneBed">1 Bed</label>
-          <input type="radio" id="twoBeds" name="numBeds" value="2">
-            <label for="twoBeds">2 Beds</label> 
-          <input type="radio" id="bidet" name="bidet" value="bidet">
-            <label for="bidet">Bidet</label>           
+          <input type="checkbox" id="juniorSuite" name="tag" value="junior suite">
+            <label for="juniorSuite">Junior Suite</label>         
         </form>
       </section>
       <section id="roomDisplay" class="main-container__rooms__pool"></section>
     </section>
-    <section id="logInBox" class="main-container__log-in hidden">
-      <form name="log-in">
-        <label for=“userName”>Username</label>
-        <input type="text" id="username" name="username" required="true">
-        <label for=“password”>Password</label>
-        <input type=“password” id=“password” name=“user-password” required="true">
-        <input type="submit" value="LOG IN">
-      </form>
+    <section class="main-container__log-in hidden" >
+      <section id="logInBox" class="main-container__log-in__box">
+        <form name="log-in" class="log-in-form">
+          <label for=“userName”>Username</label>
+          <input type="text" id="username" name="username" required="true">
+          <label for=“password”>Password</label>
+          <input type=“password” id=“password” name=“user-password” required="true">
+          <input type="submit" value="LOG IN">
+        </form>
     </section>
-    <section id="roomRender" class="main-container__room-render hidden">
-      <div class="main-container__room-render__room">
-        <img>
-        <article>details</article>
-        <article>dates</article>
+    </section>
+    <section id="roomRender" class="main-container__room-render ">
+      <section class="main-container__room-render__room">
+        <img src="../src/images/residential-suite.png">
+        <article>Bidet / 2 Beds / Queen Bed / $340.00 per night</article>
+        <article>09/30/2021 to 10/04/2021</article>
+        <article>Booking Total: $1500</article>
         <button>Book Room</button>
-      </div>
+        <button>Back to rooms</button>
+      </section>
     </section>
   </section>
   <script src="bundle.js"></script>
