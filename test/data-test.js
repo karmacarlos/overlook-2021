@@ -258,19 +258,19 @@ const data = {
   roomImgs: [
     {
       roomType: 'residential suite',
-      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6-TVdEWftG9yBhzLw4tpqzYEqy18j5-SJ4w&usqp=CAU'
+      imageUrl: '../src/images/residential-suite.png'
     },
     {
       roomType: 'suite',
-      imageUrl: 'https://img1.10bestmedia.com/Images/Photos/378649/Park-Hyatt-New-York-Manhattan-Sky-Suite-Master-Bedroom-low-res_54_990x660.jpg'
+      imageUrl: '../src/images/suite.png'
     },
     {
       roomType: 'single room',
-      imageUrl: 'https://i.pinimg.com/originals/ee/4c/20/ee4c2087d7dc0aa9df1c50874458af16.jpg'
+      imageUrl: '../src/images/single-room.png'
     },
     {
       roomType: 'junior suite',
-      imageUrl: 'https://s7d2.scene7.com/is/image/ritzcarlton/laxlz-junior-suite-50675038?$XlargeViewport100pct$'
+      imageUrl: '../src/images/junior-suite.png'
     }
   ]
 }
