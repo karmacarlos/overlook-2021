@@ -49,12 +49,16 @@ function createDashboard(data, roomImgs) {
   hotel.prepareRooms();
   randomCustomer = new Customer(hotel.getRandomCustomer());
   customerBookings = randomCustomer.getBookings(hotel);
-  domUpdates.renderAllBookings(customerBookings);
-  spentAmount = randomCustomer.getSpentAmount(hotel);
-  domUpdates.renderSpentAmount(spentAmount);
+  displayDashboardInfo();
   limitDatesInput();
   
   return hotel;
+}
+
+function displayDashboardInfo() {
+  domUpdates.renderAllBookings(customerBookings);
+  spentAmount = randomCustomer.getSpentAmount(hotel);
+  domUpdates.renderSpentAmount(spentAmount);
 }
 
 function limitDatesInput() {
