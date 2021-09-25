@@ -70,7 +70,7 @@ nav {
   width: 30vw;
   height: 55vh;
   @include flex-column();
-  opacity: .9;;
+  opacity: .9;
   justify-content: flex-start;
   align-items: center;
   background-color: $pastel;
@@ -148,13 +148,29 @@ nav {
 .main-container__rooms__pool {
   display: grid;
   height: 75vh;
-  width: 80vw;
-  grid-template-columns: [first] 22% [second] 22% [third] 22% [fourth] 22% [end];
+  width: 95vw;
+  grid-template-columns: [first] 20% [second] 20% [third] 20% [fourth] 20% [five] 20%[end];
   grid-template-rows: [first-row] 45% [second-row] 45%;
   grid-auto-flow: row;
-  column-gap: 3%;
-  row-gap: 5%;
+  row-gap: 3%;
   padding-left: 2%;
+  --contentWidth: 95vw;
+  overflow: scroll;
+  div {
+    max-width: 300px;
+    img {
+      max-height: 20vh;
+      border-radius: 7px 7px 0 0;
+    }
+    p {
+      text-transform: capitalize;
+      padding-left: 7px;
+    }
+    border-radius: 7px;
+    background-color: $pastel;
+    opacity: .9;
+    @include flex-column();
+  }
 }
 
 .room-card {
@@ -179,7 +195,6 @@ nav {
   }
   label {
     margin-top: 4vh;
-    // margin-bottom: 4vh;
   }
   @include flex-column();
   align-items: center
