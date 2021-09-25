@@ -1,14 +1,7 @@
 /* eslint-disable max-len */
-
+//Imports
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
-import './images/junior-suite.png';
-import './images/Reception.png';
-import './images/residential-suite.png';
-import './images/single-room.png';
-import './images/suite.png';
+import dayjs from 'dayjs';
 import data from '../test/data-test';
 
 import { fetchData, updateBookings } from './apiCalls'
@@ -17,18 +10,56 @@ import Hotel from './classes/hotel';
 import Room from './classes/room';
 import Booking from './classes/booking';
 import Customer from './classes/customer';
+import domUpdates from './domUpdates';
 
+//Destructuring assignment
+const {
+  allBookings,
+  totalSpent,
+  checkInInput,
+  checkOutInput,
+} = domUpdates;
+
+// Global Variables
 const roomImgs = data.roomImgs;
+let hotel;
+let randomCustomer;
+let customerBookings;
+let spentAmount;
+
+//Event Listeners
+
+window.addEventListener('load', loadPage)
+
+//Event Handlers
+
+function loadPage() {
+  getData()
+}
+
+//Helper functions
 
 function getData() {
   Promise.all([fetchData('rooms'), fetchData('bookings'), fetchData('customers')])
-    .then(data => createHotel(data, roomImgs)).then(hotel => console.log(hotel))
+    .then(data => createDashboard(data, roomImgs))
 }
 
-getData();
-
-function createHotel(data, roomImgs) {
-  const hotel = new Hotel(data[0], data[1], data[2], roomImgs);
-  // hotel.prepareRooms();
+function createDashboard(data, roomImgs) {
+  hotel = new Hotel(data[0].rooms, data[1].bookings, data[2].customers, roomImgs);
+  hotel.prepareRooms();
+  randomCustomer = new Customer(hotel.getRandomCustomer());
+  customerBookings = randomCustomer.getBookings(hotel);
+  domUpdates.renderAllBookings(customerBookings);
+  spentAmount = randomCustomer.getSpentAmount(hotel);
+  domUpdates.renderSpentAmount(spentAmount);
+  limitDatesInput();
+  
   return hotel;
+}
+
+function limitDatesInput() {
+  checkInInput.min = dayjs().format('YYYY-MM-DD');
+  checkInInput.value = checkInInput.min;
+  checkOutInput.min = dayjs().add('1', 'day').format('YYYY-MM-DD');
+  checkOutInput.value = checkOutInput.min;
 }

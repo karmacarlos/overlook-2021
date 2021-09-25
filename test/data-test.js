@@ -258,19 +258,19 @@ const data = {
   roomImgs: [
     {
       roomType: 'residential suite',
-      imageUrl: '../src/images/residential-suite.png'
+      imageUrl: './images/residential-suite.png'
     },
     {
       roomType: 'suite',
-      imageUrl: '../src/images/suite.png'
+      imageUrl: './images/suite.png'
     },
     {
       roomType: 'single room',
-      imageUrl: '../src/images/single-room.png'
+      imageUrl: './images/single-room.png'
     },
     {
       roomType: 'junior suite',
-      imageUrl: '../src/images/junior-suite.png'
+      imageUrl: './images/junior-suite.png'
     }
   ]
 }
