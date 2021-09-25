@@ -5,11 +5,14 @@
 //Input
 const checkInInput = document.getElementById('checkInInput');
 const checkOutInput = document.getElementById('checkOutInput');
+// const datesInput = document.querySelector(`form[name="${datesInput}"]`);
+const submitDates = document.getElementById('datesSubmit');
 
 //Sections
 const allBookings = document.getElementById('allBookings');
 const totalSpent = document.getElementById('totalSpent');
-
+const dashBoard = document.getElementById('inputBooking');
+const roomsPool = document.getElementById('availableRooms');
 
 const domUpdates = {
 
@@ -34,9 +37,13 @@ const domUpdates = {
   },
 
   allBookings,
+  // datesInput,
   totalSpent,
   checkInInput,
   checkOutInput,
+  submitDates,
+  dashBoard,
+  roomsPool,
 }
 
 export default domUpdates;

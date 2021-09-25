@@ -18,6 +18,10 @@ const {
   totalSpent,
   checkInInput,
   checkOutInput,
+  // datesInput,
+  submitDates,
+  dashBoard,
+  roomsPool,
 } = domUpdates;
 
 // Global Variables
@@ -26,15 +30,28 @@ let hotel;
 let randomCustomer;
 let customerBookings;
 let spentAmount;
+let checkInDate;
+let checkOutDate;
 
 //Event Listeners
 
-window.addEventListener('load', loadPage)
+window.addEventListener('load', loadPage);
+// submitDates.addEventListener('click', displayAvailableRooms);
 
 //Event Handlers
 
 function loadPage() {
   getData()
+}
+
+function displayAvailableRooms(event) {
+  event.preventDefault();
+  domUpdates.hide(dashBoard);
+  domUpdates.show(roomsPool);
+  checkInDate = checkInInput.value;
+  console.log('check In', checkInDate)
+  checkOutDate = checkOutInput.value;
+  console.log('check Out', checkOutDate)
 }
 
 //Helper functions
@@ -51,7 +68,7 @@ function createDashboard(data, roomImgs) {
   customerBookings = randomCustomer.getBookings(hotel);
   displayDashboardInfo();
   limitDatesInput();
-  
+  submitDates.addEventListener('click', displayAvailableRooms);
   return hotel;
 }
 
