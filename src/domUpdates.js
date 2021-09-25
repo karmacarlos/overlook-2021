@@ -13,6 +13,7 @@ const allBookings = document.getElementById('allBookings');
 const totalSpent = document.getElementById('totalSpent');
 const dashBoard = document.getElementById('inputBooking');
 const roomsPool = document.getElementById('availableRooms');
+const roomsContainer = document.getElementById('roomDisplay');
 
 const domUpdates = {
 
@@ -22,6 +23,18 @@ const domUpdates = {
       <p>${booking.date} - Room#: ${booking.roomNumber}</p>
       `
     })
+  },
+
+  renderAvailableRooms(availableRooms) {
+    availableRooms.forEach(room => {
+      roomsContainer.innerHTML += `
+      <div>
+        <img src="${room.image}">
+        <p>${room.roomType}</p>
+        <p>Cost per night: $ ${room.costPerNight}</p>
+      </div>
+      `
+    });
   },
 
   renderSpentAmount(money) {
@@ -44,6 +57,7 @@ const domUpdates = {
   submitDates,
   dashBoard,
   roomsPool,
+  roomsContainer,
 }
 
 export default domUpdates;

@@ -38,6 +38,7 @@ class Hotel {
 
   getAvailableRooms(checkInDate, checkOutDate) {
     const bookingSearch = this.getDates(checkInDate, checkOutDate);
+    // console.log(bookingSearch);
     const availableRooms = this.roomsToDisplay.reduce((acc, room) => {
       let filterBookingsByRoom = this.bookings.filter(booking => booking.roomNumber === room.number);
       let isBooked = filterBookingsByRoom.some(booking => bookingSearch.includes(booking.date))

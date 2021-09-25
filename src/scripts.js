@@ -22,6 +22,7 @@ const {
   submitDates,
   dashBoard,
   roomsPool,
+  roomsContainer,
 } = domUpdates;
 
 // Global Variables
@@ -49,9 +50,9 @@ function displayAvailableRooms(event) {
   domUpdates.hide(dashBoard);
   domUpdates.show(roomsPool);
   checkInDate = checkInInput.value;
-  console.log('check In', checkInDate)
   checkOutDate = checkOutInput.value;
-  console.log('check Out', checkOutDate)
+  let availableRooms = hotel.getAvailableRooms(checkInDate, checkOutDate);
+  domUpdates.renderAvailableRooms(availableRooms);
 }
 
 //Helper functions
