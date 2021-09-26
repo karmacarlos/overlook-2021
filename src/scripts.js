@@ -33,6 +33,8 @@ let customerBookings;
 let spentAmount;
 let checkInDate;
 let checkOutDate;
+let availableRooms;
+let roomTypes;
 
 //Event Listeners
 
@@ -51,7 +53,7 @@ function displayAvailableRooms(event) {
   domUpdates.show(roomsPool);
   checkInDate = checkInInput.value;
   checkOutDate = checkOutInput.value;
-  let availableRooms = hotel.getAvailableRooms(checkInDate, checkOutDate);
+  availableRooms = hotel.getAvailableRooms(checkInDate, checkOutDate);
   domUpdates.renderAvailableRooms(availableRooms);
 }
 
@@ -84,4 +86,14 @@ function limitDatesInput() {
   checkInInput.value = checkInInput.min;
   checkOutInput.min = dayjs().add('1', 'day').format('YYYY-MM-DD');
   checkOutInput.value = checkOutInput.min;
+}
+
+function getRoomTypes() {
+  roomTypes = [];
+  let checkedTypes = document.querySelectorAll('input[type=checkbox]:checked');
+  checkedTypes.forEach(checkedBox => {
+    roomTypes.push(checkedBox.value);
+    (roomTypes.length) && randomCustomer.filterRoomsByType(roomTypes, availableRooms);
+
+  })
 }

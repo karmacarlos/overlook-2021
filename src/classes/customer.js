@@ -26,6 +26,22 @@ class Customer {
     }, 0).toFixed(2);
     return spentAmount;
   }
+
+  filterRoomsByType(input, availableRooms) {
+    let filteredRooms = input.reduce((acc, roomType) => {
+      let indvFiltered = availableRooms.filter(room => {
+        return room.roomType === roomType;
+      })
+      acc.push(indvFiltered); 
+      return acc;
+    }, []).flat();
+    if (!filteredRooms.length) {
+      return 'We are sorry, we don\'t have this types of rooms available';
+    } else { 
+      return filteredRooms;
+    }
+  }
+
 }
 
 export default Customer;
