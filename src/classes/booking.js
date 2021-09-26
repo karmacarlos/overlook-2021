@@ -7,6 +7,8 @@ class Booking {
     this.roomNumber = roomNumber;
     this.singleBookings = [];
     this.bookingCost = 0;
+    this.roomDetails = '';
+    this.roomToBook = {};
   }
 
   getSingleBookings(hotel) {
@@ -23,9 +25,32 @@ class Booking {
     return bookingsToPost;
   }
 
+  getRoomDetails(hotel) {
+    const room = hotel.roomsToDisplay.find(room => room.number === this.roomNumber);
+    let roomKeys = Object.keys(room);
+    let roomDetails = roomKeys.reduce((acc, detail) => {
+      if (detail === 'hasBidet' && room[detail]) {
+        acc += 'Bidet / ';
+      } else if (detail === 'bedsNumber' && room[detail] > 1) {
+        acc += '2 Beds /';
+      } else if (detail === 'bedsNumber' && room[detail] === 1) {
+        acc += '1 Bed / ';
+      } else if (detail === 'bedSize') {
+        acc += `${room[detail]} bed / `;
+      } else if (detail === 'costPerNight') {
+        acc += `Cost per night: $ ${room[detail]}`
+      }
+      return acc
+    }, '');
+    this.roomDetails = roomDetails;
+    
+    return roomDetails;
+  }
+
   getBookingCost(hotel) {
     const room = hotel.roomsToDisplay.find(room => room.number === this.roomNumber);
     const bookingCost = room.costPerNight * this.singleBookings.length;
+    this.roomToBook = room;
     this.bookingCost = bookingCost;
     return bookingCost;
   }

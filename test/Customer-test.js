@@ -54,7 +54,13 @@ describe('Customer class', function() {
   it('should be able to calculate how much has been spent on bookings', function() {
     customer1.getBookings(hotel);
     customer1.getSpentAmount(hotel);
-    assert.isNumber(customer1.getSpentAmount(hotel));
     assert.equal(customer1.getSpentAmount(hotel), 1062.77);
+  })
+
+  it('should be able to filter room by type', function() {
+    assert.equal(customer1.filterRoomsByType(['suite', 'residential suite'], data.rooms).length, 3);
+    assert.equal(customer1.filterRoomsByType(['luxury'], data.rooms), 'We are sorry, we don\'t have this types of rooms available');
+    assert.equal(customer2.filterRoomsByType(['suite', 'residential suite'], data.rooms).length, 3);
+    assert.equal(customer2.filterRoomsByType(['luxury'], data.rooms), 'We are sorry, we don\'t have this types of rooms available');
   })
 })

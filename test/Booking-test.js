@@ -1,10 +1,11 @@
+/* eslint-disable max-len */
 import { assert } from 'chai';
 import data from './data-test'; 
 import Booking from '../src/classes/booking';
 import Hotel from '../src/classes/hotel';
 
 
-describe.only('Booking class', function() {
+describe('Booking class', function() {
   let booking1, booking2, hotel;
   beforeEach(function() {
     hotel = new Hotel(data.rooms, data.bookings, data.customers, data.roomImgs);
@@ -49,6 +50,16 @@ describe.only('Booking class', function() {
     assert.equal(booking2.bookingCost, 0);
   })
 
+  it('should be able to store the room details', function() {
+    assert.equal(booking1.roomDetails, '');
+    assert.equal(booking2.roomDetails, '');
+  })
+
+  it('should be able to store the room to book', function() {
+    assert.equal(booking1.roomToBook, '');
+    assert.equal(booking2.roomToBook, '');
+  })
+
   it('should create an individual booking per night', function() {
     booking1.getSingleBookings(hotel);
     booking2.getSingleBookings(hotel);
@@ -63,5 +74,12 @@ describe.only('Booking class', function() {
     booking2.getBookingCost(hotel);
     assert.equal(booking1.bookingCost, 601.17);
     assert.equal(booking2.bookingCost, 2488.2);
+  })
+
+  it('should be able to find the details from the room to book', function() {
+    booking1.getRoomDetails(hotel);
+    booking2.getRoomDetails(hotel);
+    assert.equal(booking1.roomDetails, 'Bidet / 1 Bed / queen bed / Cost per night: $ 200.39')
+    assert.equal(booking2.roomDetails, '1 Bed / twin bed / Cost per night: $ 497.64');
   })
 })
