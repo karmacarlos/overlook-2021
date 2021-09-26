@@ -27,25 +27,25 @@
       <section id="formContainer" class="main-container__new-booking__form">
         <h2>Book your next stay</h2>
         <form name="datesInput">
-          <h3>Check in date:</h3>
           <div id="checkInDate" class="checkin-input">
             <div>
+              <Label for="checkInInput">Check in date:</Label>
               <input type="date" id="checkInInput" name="trip-start" value="2021-09-25" min="2021-09-20" max="2022-31-12">
             </div>
           </div>
-          <h3>Check out date:</h3>
           <div id="checkOutDate" class="checkout-input">
             <div>
+              <label for="checkOutInput">Check out date:</label>
               <input type="date" id="checkOutInput" name="trip-ends" value="2021-09-25"  min="2021-09-25" max="2022-31-12">
             </div>
           </div>
             <input type="submit" value="Check Availability" class="submit" id="datesSubmit">
         </form>
       </section>
-      <section id="checkOutInput" class="main-container__new-booking__bookings">
+      <section id="myBookingBox" class="main-container__new-booking__bookings">
         <h2>My Bookings</h2>
         <section id="allBookings" class="booking-list"></section>
-        <h4 id="totalSpent">$Many dollars.</h4>
+        <h3 id="totalSpent"></h3>
       </section>
     </section>
     <section id="availableRooms" class="main-container__rooms hidden">
@@ -63,7 +63,7 @@
       </section>
       <section id="roomDisplay" class="main-container__rooms__pool"></section>
     </section>
-    <section class="main-container__log-in hidden" >
+    <section class="main-container__log-in hidden" id="logInConatainer">
       <section id="logInBox" class="main-container__log-in__box">
         <form name="log-in" class="log-in-form">
           <label for=“userName”>Username</label>
@@ -72,7 +72,7 @@
           <input type=“password” id=“password” name=“user-password” required="true">
           <input type="submit" value="LOG IN">
         </form>
-    </section>
+      </section>
     </section>
     <section id="roomRender" class="main-container__room-render hidden">
       <section id="bookingPreview" class="main-container__room-render__room">

@@ -32,8 +32,8 @@ const domUpdates = {
   renderAvailableRooms(availableRooms) {
     availableRooms.forEach(room => {
       roomsContainer.innerHTML += `
-      <div id="${room.number}">
-        <img src="${room.image}">
+      <div id="${room.number}" >
+        <img src="${room.image}" alt="Hotel room Image">
         <p>${room.roomType}</p>
         <p>Cost per night: $ ${room.costPerNight}</p>
       </div>
@@ -43,7 +43,8 @@ const domUpdates = {
 
   renderBookingPreview(booking) {
     bookingPreview.innerHTML = `
-    <img src=${booking.roomToBook.image}>
+    <img src=${booking.roomToBook.image} 
+    alt="Image of a hotel ${booking.roomToBook.roomType}">
     <article>${booking.roomDetails}</article>
     <article>${booking.checkIn} to ${booking.checkOut}</article>
     <article>Booking Total: $ ${booking.bookingCost}</article>
