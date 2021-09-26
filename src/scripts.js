@@ -18,7 +18,6 @@ const {
   totalSpent,
   checkInInput,
   checkOutInput,
-  // datesInput,
   submitDates,
   dashBoard,
   roomsPool,
@@ -27,6 +26,9 @@ const {
   bookingContainer,
   bookingPreview,
   dashboard,
+  logInBtn,
+  usernameInp,
+  passwordInp,
 } = domUpdates;
 
 // Global Variables
@@ -42,6 +44,7 @@ typesForm.addEventListener('click', getRoomTypes);
 roomsContainer.addEventListener('click', checkRoomDetails);
 bookingPreview.addEventListener('click', bookNow);
 submitDates.addEventListener('click', displayAvailableRooms);
+logInBtn.addEventListener('click', validateCustomer);
 
 //Event Handlers
 
@@ -82,6 +85,15 @@ function bookNow(event) {
     domUpdates.hide(bookingPreview);
     domUpdates.show(roomsPool);
   }
+}
+
+function validateCustomer(event) {
+  event.preventDefault;
+  const username = usernameInp.value;
+  const password = passwordInp.value;
+  const customerID = getUserID(username);
+  
+  
 }
 
 //Helper functions
@@ -160,4 +172,16 @@ function showConfirmation() {
     domUpdates.hide(bookingPreview);
     domUpdates.show(dashboard);
   })
+}
+
+function getUserID(username) {
+  if (username.length === 10) {
+    let splitedUsername = username.split('');
+    let userID = parseInt(splitedUsername[8] + splitedUsername[9])
+    return userID
+  } else if (username.length === 9) {
+    let splitedUsername = username.split('');
+    let userID = parseInt(splitedUsername[8])
+    return userID
+  }
 }

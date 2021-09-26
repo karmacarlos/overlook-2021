@@ -18,6 +18,9 @@ const roomsContainer = document.getElementById('roomDisplay');
 const bookingContainer = document.getElementById('roomRender');
 const bookingPreview = document.getElementById('bookingPreview');
 const dashboard = document.getElementById('inputBooking');
+const logInBtn = document.getElementById('logInSubmit');
+const usernameInp = document.getElementById('username');
+const passwordInp = document.getElementById('password');
 
 const domUpdates = {
 
@@ -78,6 +81,9 @@ const domUpdates = {
   bookingContainer,
   bookingPreview,
   dashboard,
+  logInBtn,
+  usernameInp,
+  passwordInp,
 }
 
 export default domUpdates;

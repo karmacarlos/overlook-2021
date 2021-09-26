@@ -7,10 +7,10 @@ html {
   @include flex-column()
 }
 
-::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-}
+// ::-webkit-scrollbar {
+//   width: 0;
+//   background: transparent;
+// }
 
 body {
   background-image: $primary-background;

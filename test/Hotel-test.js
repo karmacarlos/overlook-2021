@@ -7,7 +7,7 @@ import Hotel from '../src/classes/hotel';
 
 import Room from '../src/classes/room';
 
-describe('Hotel class', function() {
+describe.only('Hotel class', function() {
   let hotel;
   beforeEach( function() {
     hotel = new Hotel(data.rooms, data.bookings, data.customers, data.roomImgs);
@@ -62,5 +62,10 @@ describe('Hotel class', function() {
 
   it('should give an apology if there\'s no available rooms', function() {
     assert.equal(hotel.getAvailableRooms(), 'We are very sorry, there is not an available room for this dates')
+  })
+
+  it('should have a way to obtain a customer details', function() {
+    assert.deepEqual(hotel.getCustomerByID(1), data.customers[0]);
+    assert.deepEqual(hotel.getCustomerByID(2), data.customers[1]);
   })
 })
