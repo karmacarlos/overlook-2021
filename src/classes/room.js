@@ -4,6 +4,7 @@ class Room {
     this.roomType = roomDetails.roomType;
     this.hasBidet = roomDetails.bidet;
     this.bedsNumber = roomDetails.numBeds;
+    this.bedSize = roomDetails.bedSize;
     this.costPerNight = roomDetails.costPerNight;
     this.image = '';
   }

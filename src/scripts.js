@@ -24,6 +24,8 @@ const {
   roomsPool,
   roomsContainer,
   typesForm,
+  bookingContainer,
+  bookingPreview,
 } = domUpdates;
 
 // Global Variables
@@ -42,6 +44,7 @@ let roomTypes;
 window.addEventListener('load', loadPage);
 // submitDates.addEventListener('click', displayAvailableRooms);
 typesForm.addEventListener('click', getRoomTypes);
+roomsContainer.addEventListener('click', checkRoomDetails);
 
 //Event Handlers
 
@@ -57,6 +60,23 @@ function displayAvailableRooms(event) {
   checkOutDate = checkOutInput.value;
   availableRooms = hotel.getAvailableRooms(checkInDate, checkOutDate);
   domUpdates.renderAvailableRooms(availableRooms);
+}
+
+function checkRoomDetails(event) {
+  event.preventDefault();
+  domUpdates.hide(roomsPool);
+  domUpdates.show(bookingContainer);
+  let roomNumber;
+  if (parseInt(event.target.parentNode.id)) {
+    roomNumber = parseInt(event.target.parentNode.id);
+  } else {
+    roomNumber = parseInt(event.target.id);
+  }
+  let booking = new Booking(randomCustomer.id, checkInDate, checkOutDate, roomNumber);
+  booking.getSingleBookings(hotel);
+  booking.getRoomDetails(hotel);
+  console.log(booking)
+  
 }
 
 //Helper functions

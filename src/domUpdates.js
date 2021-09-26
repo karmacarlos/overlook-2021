@@ -15,6 +15,8 @@ const totalSpent = document.getElementById('totalSpent');
 const dashBoard = document.getElementById('inputBooking');
 const roomsPool = document.getElementById('availableRooms');
 const roomsContainer = document.getElementById('roomDisplay');
+const bookingContainer = document.getElementById('roomRender');
+const bookingPreview = document.getElementById('bookingPreview');
 
 const domUpdates = {
 
@@ -29,13 +31,17 @@ const domUpdates = {
   renderAvailableRooms(availableRooms) {
     availableRooms.forEach(room => {
       roomsContainer.innerHTML += `
-      <div>
+      <div id="${room.number}">
         <img src="${room.image}">
         <p>${room.roomType}</p>
         <p>Cost per night: $ ${room.costPerNight}</p>
       </div>
       `
     });
+  },
+
+  renderBookingPreview(roomChoice) {
+
   },
 
   renderSpentAmount(money) {
@@ -60,6 +66,8 @@ const domUpdates = {
   roomsPool,
   roomsContainer,
   typesForm,
+  bookingContainer,
+  bookingPreview,
 }
 
 export default domUpdates;
