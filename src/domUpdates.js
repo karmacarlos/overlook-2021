@@ -7,6 +7,7 @@ const checkInInput = document.getElementById('checkInInput');
 const checkOutInput = document.getElementById('checkOutInput');
 // const datesInput = document.querySelector(`form[name="${datesInput}"]`);
 const submitDates = document.getElementById('datesSubmit');
+const typesForm = document.getElementById('roomFeaturesInput');
 
 //Sections
 const allBookings = document.getElementById('allBookings');
@@ -58,6 +59,7 @@ const domUpdates = {
   dashBoard,
   roomsPool,
   roomsContainer,
+  typesForm,
 }
 
 export default domUpdates;

@@ -23,6 +23,7 @@ const {
   dashBoard,
   roomsPool,
   roomsContainer,
+  typesForm,
 } = domUpdates;
 
 // Global Variables
@@ -40,6 +41,7 @@ let roomTypes;
 
 window.addEventListener('load', loadPage);
 // submitDates.addEventListener('click', displayAvailableRooms);
+typesForm.addEventListener('click', getRoomTypes);
 
 //Event Handlers
 
@@ -93,7 +95,13 @@ function getRoomTypes() {
   let checkedTypes = document.querySelectorAll('input[type=checkbox]:checked');
   checkedTypes.forEach(checkedBox => {
     roomTypes.push(checkedBox.value);
-    (roomTypes.length) && randomCustomer.filterRoomsByType(roomTypes, availableRooms);
-
   })
+  if (roomTypes.length) {
+    let filteredRooms = randomCustomer.filterRoomsByType(roomTypes, availableRooms);
+    roomsContainer.innerHTML = '';
+    domUpdates.renderAvailableRooms(filteredRooms);
+  } else {
+    roomsContainer.innerHTML = '';
+    domUpdates.renderAvailableRooms(availableRooms);
+  }
 }
