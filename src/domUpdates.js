@@ -17,6 +17,7 @@ const roomsPool = document.getElementById('availableRooms');
 const roomsContainer = document.getElementById('roomDisplay');
 const bookingContainer = document.getElementById('roomRender');
 const bookingPreview = document.getElementById('bookingPreview');
+const dashboard = document.getElementById('inputBooking');
 
 const domUpdates = {
 
@@ -40,8 +41,15 @@ const domUpdates = {
     });
   },
 
-  renderBookingPreview(roomChoice) {
-
+  renderBookingPreview(booking) {
+    bookingPreview.innerHTML = `
+    <img src=${booking.roomToBook.image}>
+    <article>${booking.roomDetails}</article>
+    <article>${booking.checkIn} to ${booking.checkOut}</article>
+    <article>Booking Total: $ ${booking.bookingCost}</article>
+    <button id="bookNow">Book now</button>
+    <button id="back">Back to rooms</button>
+    `
   },
 
   renderSpentAmount(money) {
@@ -68,6 +76,7 @@ const domUpdates = {
   typesForm,
   bookingContainer,
   bookingPreview,
+  dashboard,
 }
 
 export default domUpdates;

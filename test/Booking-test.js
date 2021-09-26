@@ -52,7 +52,12 @@ describe('Booking class', function() {
 
   it('should be able to store the room details', function() {
     assert.equal(booking1.roomDetails, '');
-    assert.equal(booking2.roomDetails, '')
+    assert.equal(booking2.roomDetails, '');
+  })
+
+  it('should be able to store the room to book', function() {
+    assert.equal(booking1.roomToBook, '');
+    assert.equal(booking2.roomToBook, '');
   })
 
   it('should create an individual booking per night', function() {

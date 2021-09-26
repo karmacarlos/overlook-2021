@@ -7,7 +7,8 @@ class Booking {
     this.roomNumber = roomNumber;
     this.singleBookings = [];
     this.bookingCost = 0;
-    this.roomDetails = ''
+    this.roomDetails = '';
+    this.roomToBook = {};
   }
 
   getSingleBookings(hotel) {
@@ -49,6 +50,7 @@ class Booking {
   getBookingCost(hotel) {
     const room = hotel.roomsToDisplay.find(room => room.number === this.roomNumber);
     const bookingCost = room.costPerNight * this.singleBookings.length;
+    this.roomToBook = room;
     this.bookingCost = bookingCost;
     return bookingCost;
   }

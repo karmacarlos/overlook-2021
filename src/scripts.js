@@ -26,18 +26,13 @@ const {
   typesForm,
   bookingContainer,
   bookingPreview,
+  dashboard,
 } = domUpdates;
 
 // Global Variables
 const roomImgs = data.roomImgs;
-let hotel;
-let randomCustomer;
-let customerBookings;
-let spentAmount;
-let checkInDate;
-let checkOutDate;
-let availableRooms;
-let roomTypes;
+let hotel, randomCustomer, customerBookings, spentAmount, checkInDate,
+  checkOutDate, availableRooms, roomTypes, booking
 
 //Event Listeners
 
@@ -45,6 +40,8 @@ window.addEventListener('load', loadPage);
 // submitDates.addEventListener('click', displayAvailableRooms);
 typesForm.addEventListener('click', getRoomTypes);
 roomsContainer.addEventListener('click', checkRoomDetails);
+bookingPreview.addEventListener('click', bookNow);
+submitDates.addEventListener('click', displayAvailableRooms);
 
 //Event Handlers
 
@@ -65,6 +62,7 @@ function displayAvailableRooms(event) {
 function checkRoomDetails(event) {
   event.preventDefault();
   domUpdates.hide(roomsPool);
+  domUpdates.show(bookingPreview);
   domUpdates.show(bookingContainer);
   let roomNumber;
   if (parseInt(event.target.parentNode.id)) {
@@ -72,11 +70,18 @@ function checkRoomDetails(event) {
   } else {
     roomNumber = parseInt(event.target.id);
   }
-  let booking = new Booking(randomCustomer.id, checkInDate, checkOutDate, roomNumber);
-  booking.getSingleBookings(hotel);
-  booking.getRoomDetails(hotel);
-  console.log(booking)
-  
+  booking = createBooking(roomNumber);
+  domUpdates.renderBookingPreview(booking);
+}
+
+function bookNow(event) {
+  event.preventDefault();
+  if (event.target.id === 'bookNow') {
+    postBookings(booking)
+  } else if (event.target.id === 'back') {
+    domUpdates.hide(bookingPreview);
+    domUpdates.show(roomsPool);
+  }
 }
 
 //Helper functions
@@ -93,7 +98,7 @@ function createDashboard(data, roomImgs) {
   customerBookings = randomCustomer.getBookings(hotel);
   displayDashboardInfo();
   limitDatesInput();
-  submitDates.addEventListener('click', displayAvailableRooms);
+  // submitDates.addEventListener('click', displayAvailableRooms);
   return hotel;
 }
 
@@ -124,4 +129,35 @@ function getRoomTypes() {
     roomsContainer.innerHTML = '';
     domUpdates.renderAvailableRooms(availableRooms);
   }
+}
+
+function createBooking(roomNumber) {
+  let booking = new Booking(randomCustomer.id, checkInDate, checkOutDate, roomNumber);
+  booking.getSingleBookings(hotel);
+  booking.getRoomDetails(hotel);
+  booking.getBookingCost(hotel);
+  return booking;
+}
+
+function postBookings(booking) {
+  Promise.all(
+    booking.singleBookings.map(booking => {
+      return updateBookings(booking.userID, booking.date, booking.roomNumber)
+    })).then(() => {
+    fetchData('bookings')
+      .then(data => hotel.bookings = data.bookings)
+      .then(() => showConfirmation())
+  })
+}
+
+function showConfirmation() {
+  bookingPreview.innerHTML = `
+  <h2>Your booking has been made!</h2>
+  <button id="backToDashboard">Dashboard</button>
+  `
+  const backToDashboard = document.getElementById('backToDashboard');
+  backToDashboard.addEventListener('click', function() {
+    domUpdates.hide(bookingPreview);
+    domUpdates.show(dashboard);
+  })
 }
