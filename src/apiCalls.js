@@ -5,7 +5,7 @@ function fetchData(file) {
 }
 
 function updateBookings(userID, date, roomNumber) {
-  fetch('http://localhost:3001/api/v1/bookings', {
+  return fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
     body: JSON.stringify({
       userID,

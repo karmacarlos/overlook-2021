@@ -23,7 +23,7 @@
     </nav>
   </header>
   <section id="mainContainer" class="main-container">
-    <section id="inputBooking" class="main-container__new-booking ">
+    <section id="inputBooking" class="main-container__new-booking hidden">
       <section id="formContainer" class="main-container__new-booking__form">
         <h2>Book your next stay</h2>
         <form name="datesInput">
@@ -63,14 +63,14 @@
       </section>
       <section id="roomDisplay" class="main-container__rooms__pool"></section>
     </section>
-    <section class="main-container__log-in hidden" id="logInConatainer">
+    <section class="main-container__log-in " id="logInContainer">
       <section id="logInBox" class="main-container__log-in__box">
-        <form name="log-in" class="log-in-form">
-          <label for=“userName”>Username</label>
+        <form name="log-in" class="log-in-form" id="logInForm">
+          <label for="username">Username</label>
           <input type="text" id="username" name="username" required="true">
-          <label for=“password”>Password</label>
-          <input type=“password” id=“password” name=“user-password” required="true">
-          <input type="submit" value="LOG IN">
+          <label for="password">Password</label>
+          <input type="password" id="password" name=“user-password” required="true">
+          <input type="submit" value="LOG IN" id="logInSubmit">
         </form>
       </section>
     </section>

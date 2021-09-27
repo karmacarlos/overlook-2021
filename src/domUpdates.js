@@ -8,6 +8,7 @@ const checkOutInput = document.getElementById('checkOutInput');
 // const datesInput = document.querySelector(`form[name="${datesInput}"]`);
 const submitDates = document.getElementById('datesSubmit');
 const typesForm = document.getElementById('roomFeaturesInput');
+const logInForm = document.getElementById('logInForm');
 
 //Sections
 const allBookings = document.getElementById('allBookings');
@@ -18,6 +19,10 @@ const roomsContainer = document.getElementById('roomDisplay');
 const bookingContainer = document.getElementById('roomRender');
 const bookingPreview = document.getElementById('bookingPreview');
 const dashboard = document.getElementById('inputBooking');
+const logInBtn = document.getElementById('logInSubmit');
+const usernameInp = document.getElementById('username');
+const passwordInp = document.getElementById('password');
+const logInBox = document.getElementById('logInContainer');
 
 const domUpdates = {
 
@@ -78,6 +83,11 @@ const domUpdates = {
   bookingContainer,
   bookingPreview,
   dashboard,
+  logInBtn,
+  usernameInp,
+  passwordInp,
+  logInBox,
+  logInForm,
 }
 
 export default domUpdates;

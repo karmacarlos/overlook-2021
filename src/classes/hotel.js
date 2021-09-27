@@ -25,6 +25,11 @@ class Hotel {
     return randomCustomer;
   }
 
+  getCustomerByID(id) {
+    let customerDetails = this.customers.find(customer => customer.id === id);
+    return customerDetails;
+  }
+
   getDates(startDate, stopDate) {
     const dateArray = [];
     let currentDate = dayjs(startDate);
@@ -55,5 +60,7 @@ class Hotel {
     return availableRooms;
   }
 }
+
+
 
 export default Hotel;
