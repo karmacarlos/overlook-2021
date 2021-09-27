@@ -29,12 +29,14 @@ const {
   logInBtn,
   usernameInp,
   passwordInp,
+  logInBox,
+  logInForm,
 } = domUpdates;
 
 // Global Variables
 const roomImgs = data.roomImgs;
-let hotel, randomCustomer, customerBookings, spentAmount, checkInDate,
-  checkOutDate, availableRooms, roomTypes, booking
+let hotel, customerBookings, spentAmount, checkInDate,
+  checkOutDate, availableRooms, roomTypes, booking, newCustomer;
 
 //Event Listeners
 
@@ -84,39 +86,45 @@ function bookNow(event) {
   } else if (event.target.id === 'back') {
     domUpdates.hide(bookingPreview);
     domUpdates.show(roomsPool);
+    displayDashboardInfo();
   }
 }
 
 function validateCustomer(event) {
-  event.preventDefault;
+  event.preventDefault();
   const username = usernameInp.value;
   const password = passwordInp.value;
   const customerID = getUserID(username);
-  
-  
+  const customerDetails = hotel.getCustomerByID(customerID);
+  newCustomer = new Customer(customerDetails);
+  if (newCustomer.password === password) {
+    // customerBookings = newCustomer.getBookings(hotel);
+    domUpdates.hide(logInBox);
+    domUpdates.show(dashboard);
+    logInForm.reset();
+    displayDashboardInfo();
+  }
 }
 
 //Helper functions
 
 function getData() {
   Promise.all([fetchData('rooms'), fetchData('bookings'), fetchData('customers')])
-    .then(data => createDashboard(data, roomImgs))
+    .then(data => createHotel(data, roomImgs))
 }
 
-function createDashboard(data, roomImgs) {
+function createHotel(data, roomImgs) {
   hotel = new Hotel(data[0].rooms, data[1].bookings, data[2].customers, roomImgs);
   hotel.prepareRooms();
-  randomCustomer = new Customer(hotel.getRandomCustomer());
-  customerBookings = randomCustomer.getBookings(hotel);
-  displayDashboardInfo();
   limitDatesInput();
-  // submitDates.addEventListener('click', displayAvailableRooms);
+ 
   return hotel;
 }
 
 function displayDashboardInfo() {
+  customerBookings = newCustomer.getBookings(hotel);
   domUpdates.renderAllBookings(customerBookings);
-  spentAmount = randomCustomer.getSpentAmount(hotel);
+  spentAmount = newCustomer.getSpentAmount(hotel);
   domUpdates.renderSpentAmount(spentAmount);
 }
 
@@ -134,7 +142,7 @@ function getRoomTypes() {
     roomTypes.push(checkedBox.value);
   })
   if (roomTypes.length) {
-    let filteredRooms = randomCustomer.filterRoomsByType(roomTypes, availableRooms);
+    let filteredRooms = newCustomer.filterRoomsByType(roomTypes, availableRooms);
     roomsContainer.innerHTML = '';
     domUpdates.renderAvailableRooms(filteredRooms);
   } else {
@@ -144,7 +152,7 @@ function getRoomTypes() {
 }
 
 function createBooking(roomNumber) {
-  let booking = new Booking(randomCustomer.id, checkInDate, checkOutDate, roomNumber);
+  let booking = new Booking(newCustomer.id, checkInDate, checkOutDate, roomNumber);
   booking.getSingleBookings(hotel);
   booking.getRoomDetails(hotel);
   booking.getBookingCost(hotel);
@@ -159,6 +167,8 @@ function postBookings(booking) {
     fetchData('bookings')
       .then(data => hotel.bookings = data.bookings)
       .then(() => showConfirmation())
+      .then(() => newCustomer.getBookings(hotel))
+      .then(() => displayDashboardInfo())
   })
 }
 
