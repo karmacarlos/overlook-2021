@@ -14,7 +14,6 @@ html {
 
 body {
   background-image: $primary-background;
-  // background-size: cover;
   background-size: 1880px;
   width: 100%;
   height: 100%;
@@ -46,17 +45,16 @@ nav {
     list-style-type: none;
 
     button {
-      background-color: transparent;
-      color: $white;
+      // background-color: transparent;
+      color: $less-dark;
       margin-right: 7vw;
+      width: 100px;
+      height: 5vh;
+      border-radius: 20px;
+      background-color: $greish;
     }
   }
 }
-
-// .main-container {
-//   border: 3px solid red;
-// }
-
 
 .main-container__new-booking {
   @include flex-row();
@@ -85,6 +83,20 @@ nav {
     color: $dark-color;
     font-size: 15px;
     text-align:center;
+  }
+  button {
+    width: 150px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: $less-dark;
+    color: $greish;
+  }
+  input[type=submit] {
+    width: 150px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: $less-dark;
+    color: $greish;
   }
 }
 

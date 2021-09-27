@@ -30,6 +30,7 @@ const errorMessage1 = document.getElementById('errorMessage1')
 const apology = document.getElementById('apology');
 const home = document.getElementById('home');
 const logOutBtn = document.getElementById('logOut');
+const logInContainer = document.getElementById('logInBox');
 
 const domUpdates = {
 
@@ -84,7 +85,6 @@ const domUpdates = {
   },
 
   allBookings,
-  // datesInput,
   totalSpent,
   checkInInput,
   checkOutInput,
@@ -106,6 +106,7 @@ const domUpdates = {
   apology,
   home,
   logOutBtn,
+  logInContainer,
 }
 
 export default domUpdates;

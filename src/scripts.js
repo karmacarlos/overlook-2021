@@ -12,7 +12,6 @@ import Booking from './classes/booking';
 import Customer from './classes/customer';
 import domUpdates from './domUpdates';
 
-//Destructuring assignment
 const {
   allBookings,
   totalSpent,
@@ -36,6 +35,7 @@ const {
   apology,
   home,
   logOutBtn,
+  logInContainer,
 } = domUpdates;
 
 // Global Variables
@@ -76,7 +76,7 @@ roomsPool.addEventListener('keyup', function(event) {
   }
 })
 // checkInInput.addEventListener('keyup', updateCheckoutMinimum)
-// checkInInput.addEventListener('click', updateCheckoutMinimum)
+checkInInput.addEventListener('change', updateCheckoutMinimum)
 
 //Event Handlers
 
@@ -161,7 +161,7 @@ function validateCustomer(event) {
 
 function updateCheckoutMinimum(event) {
   event.preventDefault();
-  checkOutInput.min = dayjs().add('1', 'day').format('YYYY-MM-DD');
+  checkOutInput.min = dayjs(checkInInput.value).add('1', 'day').format('YYYY-MM-DD')
   checkOutInput.value = checkOutInput.min;
 }
 
@@ -170,6 +170,7 @@ function updateCheckoutMinimum(event) {
 function getData() {
   Promise.all([fetchData('rooms'), fetchData('bookings'), fetchData('customers')])
     .then(data => createHotel(data, roomImgs))
+    .catch(error => displayErrorMessage(error, logInContainer))
 }
 
 function createHotel(data, roomImgs) {
@@ -228,6 +229,7 @@ function postBookings(booking) {
       .then(() => showConfirmation())
       .then(() => newCustomer.getBookings(hotel))
       .then(() => displayDashboardInfo())
+      .catch(error => displayErrorMessage(error, bookingPreview))
   })
 }
 
@@ -246,12 +248,17 @@ function showConfirmation() {
 
 function getUserID(username) {
   if (username.length === 10) {
-    let splitedUsername = username.split('');
-    let userID = parseInt(splitedUsername[8] + splitedUsername[9])
+    let splittedUsername = username.split('');
+    let userID = parseInt(splittedUsername[8] + splittedUsername[9])
     return userID
   } else if (username.length === 9) {
-    let splitedUsername = username.split('');
-    let userID = parseInt(splitedUsername[8])
+    let splittedUsername = username.split('');
+    let userID = parseInt(splittedUsername[8])
     return userID
   }
+}
+
+function displayErrorMessage(error, container) {
+  console.warn(error);
+  container.innerHTML = `<p id="connectivityError" class="connectivity-error "> Our clerks are having lunch, please come back later </p>`;
 }
