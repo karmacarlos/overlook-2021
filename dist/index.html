@@ -12,7 +12,7 @@
 <body>
   <header>
     <nav class="navbar">
-      <a href="#">
+      <a href="#" id="home">
         <h1 class="header-logo">City<br>Hotel</h1>
       </a>
       <div class="right-container">
@@ -42,6 +42,7 @@
             <input type="submit" value="Check Availability" class="submit" id="datesSubmit">
         </form>
         <p id="checkoutError" class="log-in-error hidden">Please select a valid checkout date</p>
+        <p class="apology hidden" id="apology">We are deeply sorry but there is no available rooms for these dates, try adjusting the dates.</p>
       </section>
       <section id="myBookingBox" class="main-container__new-booking__bookings">
         <h2>My Bookings</h2>
@@ -53,15 +54,16 @@
       <section id="roomFeatures" class="main-container__rooms__tags">
         <form id="roomFeaturesInput" tabindex="0">
           <input type="checkbox" id="suite" name="tag" value="suite" tabindex="0">
-            <label for="suite" class="label">Suite</label>
+            <label for="suite" class="label" tabindex="0">Suite</label>
           <input type="checkbox" id="residentialSuite" name="tag" value="residential suite" tabindex="0">
-            <label for="residentialSuite">Residential Suite</label>
+            <label for="residentialSuite" tabindex="0">Residential Suite</label>
           <input type="checkbox" id="singleRoom" name="tag" value="single room" tabindex="0">
-            <label for="singleRoom">Single Room</label>
+            <label for="singleRoom" tabindex="0">Single Room</label>
           <input type="checkbox" id="juniorSuite" name="tag" value="junior suite" tabindex="0">
-            <label for="juniorSuite">Junior Suite</label>         
+            <label for="juniorSuite" tabindex="0">Junior Suite</label>         
         </form>
       </section>
+      <h2 id="errorMessage1"></h2>
       <section id="roomDisplay" class="main-container__rooms__pool"></section>
     </section>
     <section class="main-container__log-in " id="logInContainer">
@@ -78,7 +80,6 @@
     </section>
     <section id="roomRender" class="main-container__room-render hidden">
       <section id="bookingPreview" class="main-container__room-render__room">
-        
       </section>
     </section>
   </section>

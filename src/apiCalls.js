@@ -1,7 +1,9 @@
 /* eslint-disable max-len */
+
 function fetchData(file) {
   return fetch(`http://localhost:3001/api/v1/${file}`)
-    .then(response => response.json());
+    .then(response => response.json())
+    
 }
 
 function updateBookings(userID, date, roomNumber) {
