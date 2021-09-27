@@ -31,6 +31,8 @@ const {
   passwordInp,
   logInBox,
   logInForm,
+  logInError,
+  checkoutError,
 } = domUpdates;
 
 // Global Variables
@@ -41,12 +43,18 @@ let hotel, customerBookings, spentAmount, checkInDate,
 //Event Listeners
 
 window.addEventListener('load', loadPage);
-// submitDates.addEventListener('click', displayAvailableRooms);
 typesForm.addEventListener('click', getRoomTypes);
 roomsContainer.addEventListener('click', checkRoomDetails);
 bookingPreview.addEventListener('click', bookNow);
 submitDates.addEventListener('click', displayAvailableRooms);
 logInBtn.addEventListener('click', validateCustomer);
+roomsPool.addEventListener('keyup', function(event) {
+  if (event.keyCode === 13) {
+    checkRoomDetails(event)
+  }
+})
+// checkInInput.addEventListener('keyup', updateCheckoutMinimum)
+// checkInInput.addEventListener('click', updateCheckoutMinimum)
 
 //Event Handlers
 
@@ -56,12 +64,18 @@ function loadPage() {
 
 function displayAvailableRooms(event) {
   event.preventDefault();
-  domUpdates.hide(dashBoard);
-  domUpdates.show(roomsPool);
   checkInDate = checkInInput.value;
   checkOutDate = checkOutInput.value;
-  availableRooms = hotel.getAvailableRooms(checkInDate, checkOutDate);
-  domUpdates.renderAvailableRooms(availableRooms);
+  if (dayjs(checkOutDate).isBefore(dayjs(checkInDate))) {
+    domUpdates.show(checkoutError);
+  } else {
+    domUpdates.hide(dashBoard);
+    domUpdates.show(roomsPool);
+    checkInDate = checkInInput.value;
+    checkOutDate = checkOutInput.value;
+    availableRooms = hotel.getAvailableRooms(checkInDate, checkOutDate);
+    domUpdates.renderAvailableRooms(availableRooms);
+  }
 }
 
 function checkRoomDetails(event) {
@@ -94,16 +108,26 @@ function validateCustomer(event) {
   event.preventDefault();
   const username = usernameInp.value;
   const password = passwordInp.value;
-  const customerID = getUserID(username);
-  const customerDetails = hotel.getCustomerByID(customerID);
-  newCustomer = new Customer(customerDetails);
-  if (newCustomer.password === password) {
+  if ((username.length < 9 || username.length > 10) || password.length !== 12) {
+    domUpdates.show(logInError);
+  } else {
+    const customerID = getUserID(username);
+    const customerDetails = hotel.getCustomerByID(customerID);
+    newCustomer = new Customer(customerDetails);
+    if (newCustomer.password === password) {
     // customerBookings = newCustomer.getBookings(hotel);
-    domUpdates.hide(logInBox);
-    domUpdates.show(dashboard);
-    logInForm.reset();
-    displayDashboardInfo();
+      domUpdates.hide(logInBox);
+      domUpdates.show(dashboard);
+      logInForm.reset();
+      displayDashboardInfo();
+    }
   }
+}
+
+function updateCheckoutMinimum(event) {
+  event.preventDefault();
+  checkOutInput.min = dayjs().add('1', 'day').format('YYYY-MM-DD');
+  checkOutInput.value = checkOutInput.min;
 }
 
 //Helper functions
@@ -179,7 +203,7 @@ function showConfirmation() {
   `
   const backToDashboard = document.getElementById('backToDashboard');
   backToDashboard.addEventListener('click', function() {
-    domUpdates.hide(bookingPreview);
+    domUpdates.hide(bookingPreview)
     domUpdates.show(dashboard);
   })
 }

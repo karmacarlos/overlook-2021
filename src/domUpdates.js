@@ -23,6 +23,8 @@ const logInBtn = document.getElementById('logInSubmit');
 const usernameInp = document.getElementById('username');
 const passwordInp = document.getElementById('password');
 const logInBox = document.getElementById('logInContainer');
+const logInError = document.getElementById('logInError');
+const checkoutError = document.getElementById('checkoutError');
 
 const domUpdates = {
 
@@ -37,7 +39,7 @@ const domUpdates = {
   renderAvailableRooms(availableRooms) {
     availableRooms.forEach(room => {
       roomsContainer.innerHTML += `
-      <div id="${room.number}" >
+      <div id="${room.number}" tabindex="0">
         <img src="${room.image}" alt="Hotel room Image">
         <p>${room.roomType}</p>
         <p>Cost per night: $ ${room.costPerNight}</p>
@@ -88,6 +90,8 @@ const domUpdates = {
   passwordInp,
   logInBox,
   logInForm,
+  logInError,
+  checkoutError,
 }
 
 export default domUpdates;

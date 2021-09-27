@@ -41,6 +41,7 @@
           </div>
             <input type="submit" value="Check Availability" class="submit" id="datesSubmit">
         </form>
+        <p id="checkoutError" class="log-in-error hidden">Please select a valid checkout date</p>
       </section>
       <section id="myBookingBox" class="main-container__new-booking__bookings">
         <h2>My Bookings</h2>
@@ -50,14 +51,14 @@
     </section>
     <section id="availableRooms" class="main-container__rooms hidden">
       <section id="roomFeatures" class="main-container__rooms__tags">
-        <form id="roomFeaturesInput">
-          <input type="checkbox" id="suite" name="tag" value="suite">
+        <form id="roomFeaturesInput" tabindex="0">
+          <input type="checkbox" id="suite" name="tag" value="suite" tabindex="0">
             <label for="suite" class="label">Suite</label>
-          <input type="checkbox" id="residentialSuite" name="tag" value="residential suite">
+          <input type="checkbox" id="residentialSuite" name="tag" value="residential suite" tabindex="0">
             <label for="residentialSuite">Residential Suite</label>
-          <input type="checkbox" id="singleRoom" name="tag" value="single room">
+          <input type="checkbox" id="singleRoom" name="tag" value="single room" tabindex="0">
             <label for="singleRoom">Single Room</label>
-          <input type="checkbox" id="juniorSuite" name="tag" value="junior suite">
+          <input type="checkbox" id="juniorSuite" name="tag" value="junior suite" tabindex="0">
             <label for="juniorSuite">Junior Suite</label>         
         </form>
       </section>
@@ -67,11 +68,12 @@
       <section id="logInBox" class="main-container__log-in__box">
         <form name="log-in" class="log-in-form" id="logInForm">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" required="true">
+          <input novalidate type="text" id="username" name="username">
           <label for="password">Password</label>
-          <input type="password" id="password" name=“user-password” required="true">
+          <input novalidate type="password" id="password" name=“user-password”>
           <input type="submit" value="LOG IN" id="logInSubmit">
         </form>
+        <p id="logInError" class="log-in-error hidden">Incorrect username or password, please try again</p>
       </section>
     </section>
     <section id="roomRender" class="main-container__room-render hidden">
