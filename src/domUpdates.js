@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 //Selectors
 
 //Buttons
@@ -25,6 +26,8 @@ const passwordInp = document.getElementById('password');
 const logInBox = document.getElementById('logInContainer');
 const logInError = document.getElementById('logInError');
 const checkoutError = document.getElementById('checkoutError');
+const errorMessage1 = document.getElementById('errorMessage1')
+const apology = document.getElementById('apology');
 
 const domUpdates = {
 
@@ -37,15 +40,21 @@ const domUpdates = {
   },
 
   renderAvailableRooms(availableRooms) {
-    availableRooms.forEach(room => {
-      roomsContainer.innerHTML += `
+    if (availableRooms === 'We are sorry, we don\'t have this types of rooms available') {
+      errorMessage1.innerText = availableRooms
+    } else {
+      errorMessage1.innerText = ''
+      availableRooms.forEach(room => {
+        roomsContainer.innerHTML += `
       <div id="${room.number}" tabindex="0">
-        <img src="${room.image}" alt="Hotel room Image">
-        <p>${room.roomType}</p>
-        <p>Cost per night: $ ${room.costPerNight}</p>
+      <img src="${room.image}" alt="Hotel room Image">
+      <p>${room.roomType}</p>
+      <p>Cost per night: $ ${room.costPerNight}</p>
       </div>
       `
-    });
+      });
+    }
+    
   },
 
   renderBookingPreview(booking) {
@@ -92,6 +101,7 @@ const domUpdates = {
   logInForm,
   logInError,
   checkoutError,
+  apology,
 }
 
 export default domUpdates;

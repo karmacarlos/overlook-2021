@@ -33,6 +33,7 @@ const {
   logInForm,
   logInError,
   checkoutError,
+  apology,
 } = domUpdates;
 
 // Global Variables
@@ -66,31 +67,44 @@ function displayAvailableRooms(event) {
   event.preventDefault();
   checkInDate = checkInInput.value;
   checkOutDate = checkOutInput.value;
+  availableRooms = hotel.getAvailableRooms(checkInDate, checkOutDate);
   if (dayjs(checkOutDate).isBefore(dayjs(checkInDate))) {
     domUpdates.show(checkoutError);
+    domUpdates.hide(apology);
+  } else if (typeof(availableRooms) === 'string') {
+    domUpdates.hide(checkoutError);
+    domUpdates.show(apology);
   } else {
+    domUpdates.hide(apology);
+    domUpdates.hide(checkoutError);
     domUpdates.hide(dashBoard);
     domUpdates.show(roomsPool);
     checkInDate = checkInInput.value;
     checkOutDate = checkOutInput.value;
-    availableRooms = hotel.getAvailableRooms(checkInDate, checkOutDate);
     domUpdates.renderAvailableRooms(availableRooms);
   }
 }
 
 function checkRoomDetails(event) {
   event.preventDefault();
-  domUpdates.hide(roomsPool);
-  domUpdates.show(bookingPreview);
-  domUpdates.show(bookingContainer);
   let roomNumber;
-  if (parseInt(event.target.parentNode.id)) {
-    roomNumber = parseInt(event.target.parentNode.id);
-  } else {
-    roomNumber = parseInt(event.target.id);
+  let targetParentId = parseInt(event.target.parentNode.id);
+  let targetId = parseInt(event.target.id);
+  if (targetParentId) {
+    domUpdates.hide(roomsPool);
+    domUpdates.show(bookingPreview);
+    domUpdates.show(bookingContainer);
+    roomNumber = targetParentId;
+    booking = createBooking(roomNumber);
+    domUpdates.renderBookingPreview(booking);
+  } else if (targetId) {
+    domUpdates.hide(roomsPool);
+    domUpdates.show(bookingPreview);
+    domUpdates.show(bookingContainer);
+    roomNumber = targetId;
+    booking = createBooking(roomNumber);
+    domUpdates.renderBookingPreview(booking);
   }
-  booking = createBooking(roomNumber);
-  domUpdates.renderBookingPreview(booking);
 }
 
 function bookNow(event) {
@@ -203,6 +217,7 @@ function showConfirmation() {
   `
   const backToDashboard = document.getElementById('backToDashboard');
   backToDashboard.addEventListener('click', function() {
+    roomsContainer.innerHTML = ''
     domUpdates.hide(bookingPreview)
     domUpdates.show(dashboard);
   })

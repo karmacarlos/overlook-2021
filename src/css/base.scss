@@ -80,6 +80,12 @@ nav {
   h3 {
     padding-left: 1vw;
   }
+  p {
+    margin: 1vw;
+    color: $dark-color;
+    font-size: 15px;
+    text-align:center;
+  }
 }
 
 .booking-list {
@@ -92,7 +98,6 @@ nav {
     background-color: $white;
     font-size: 15px;
     text-align:center;
-    // text-justify:newspaper;
   }
 }
 
@@ -150,6 +155,13 @@ nav {
   }
 }
 
+.main-container__rooms {
+  @include flex-column();
+  align-items: center;
+  h2 {
+    color: $dark-color
+  }
+}
 .main-container__rooms__pool {
   display: grid;
   height: 75vh;
