@@ -7,10 +7,10 @@ html {
   @include flex-column()
 }
 
-// ::-webkit-scrollbar {
-//   width: 0;
-//   background: transparent;
-// }
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
 
 body {
   background-image: $primary-background;
@@ -87,7 +87,12 @@ nav {
   --contentHeight: 35vh;
   overflow: scroll;
   p {
-    max-height: 2px;
+    width: 200px;
+    height: 2vh;
+    background-color: $white;
+    font-size: 15px;
+    text-align:center;
+    // text-justify:newspaper;
   }
 }
 
@@ -199,6 +204,12 @@ nav {
   }
   @include flex-column();
   align-items: center
+}
+
+.log-in-error {
+  margin: 2px;
+  color: red;
+  font-size: 13px;
 }
 
 .main-container__room-render__room {
