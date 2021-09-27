@@ -28,6 +28,8 @@ const logInError = document.getElementById('logInError');
 const checkoutError = document.getElementById('checkoutError');
 const errorMessage1 = document.getElementById('errorMessage1')
 const apology = document.getElementById('apology');
+const home = document.getElementById('home');
+const logOutBtn = document.getElementById('logOut');
 
 const domUpdates = {
 
@@ -102,6 +104,8 @@ const domUpdates = {
   logInError,
   checkoutError,
   apology,
+  home,
+  logOutBtn,
 }
 
 export default domUpdates;

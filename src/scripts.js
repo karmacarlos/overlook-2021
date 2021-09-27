@@ -34,6 +34,8 @@ const {
   logInError,
   checkoutError,
   apology,
+  home,
+  logOutBtn,
 } = domUpdates;
 
 // Global Variables
@@ -49,6 +51,25 @@ roomsContainer.addEventListener('click', checkRoomDetails);
 bookingPreview.addEventListener('click', bookNow);
 submitDates.addEventListener('click', displayAvailableRooms);
 logInBtn.addEventListener('click', validateCustomer);
+
+home.addEventListener('click', function() {
+  if (newCustomer) {
+    domUpdates.show(dashboard);
+    domUpdates.hide(roomsPool)
+    domUpdates.hide(bookingPreview);
+    domUpdates.hide(bookingContainer);
+  }
+})
+
+logOutBtn.addEventListener('click', function() {
+  newCustomer = null;
+  domUpdates.show(logInBox);
+  domUpdates.hide(dashboard);
+  domUpdates.hide(roomsPool)
+  domUpdates.hide(bookingPreview);
+  domUpdates.hide(bookingContainer);
+})
+
 roomsPool.addEventListener('keyup', function(event) {
   if (event.keyCode === 13) {
     checkRoomDetails(event)
