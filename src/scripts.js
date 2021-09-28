@@ -3,18 +3,17 @@
 import './css/base.scss';
 import dayjs from 'dayjs';
 import data from '../test/data-test';
-
 import { fetchData, updateBookings } from './apiCalls'
-
 import Hotel from './classes/hotel';
-import Room from './classes/room';
 import Booking from './classes/booking';
 import Customer from './classes/customer';
 import domUpdates from './domUpdates';
+import './images/junior-suite.png';
+import './images/suite.png';
+import './images/residential-suite.png';
+import './images/single-room.png';
 
 const {
-  allBookings,
-  totalSpent,
   checkInInput,
   checkOutInput,
   submitDates,
@@ -51,32 +50,10 @@ roomsContainer.addEventListener('click', checkRoomDetails);
 bookingPreview.addEventListener('click', bookNow);
 submitDates.addEventListener('click', displayAvailableRooms);
 logInBtn.addEventListener('click', validateCustomer);
-
-home.addEventListener('click', function() {
-  if (newCustomer) {
-    domUpdates.show(dashboard);
-    domUpdates.hide(roomsPool)
-    domUpdates.hide(bookingPreview);
-    domUpdates.hide(bookingContainer);
-  }
-})
-
-logOutBtn.addEventListener('click', function() {
-  newCustomer = null;
-  domUpdates.show(logInBox);
-  domUpdates.hide(dashboard);
-  domUpdates.hide(roomsPool)
-  domUpdates.hide(bookingPreview);
-  domUpdates.hide(bookingContainer);
-})
-
-roomsPool.addEventListener('keyup', function(event) {
-  if (event.keyCode === 13) {
-    checkRoomDetails(event)
-  }
-})
-// checkInInput.addEventListener('keyup', updateCheckoutMinimum)
-checkInInput.addEventListener('change', updateCheckoutMinimum)
+home.addEventListener('click', bringMeHome);
+logOutBtn.addEventListener('click', logOut);
+roomsPool.addEventListener('keyup', enableTab);
+checkInInput.addEventListener('change', updateCheckoutMinimum);
 
 //Event Handlers
 
@@ -150,7 +127,6 @@ function validateCustomer(event) {
     const customerDetails = hotel.getCustomerByID(customerID);
     newCustomer = new Customer(customerDetails);
     if (newCustomer.password === password) {
-    // customerBookings = newCustomer.getBookings(hotel);
       domUpdates.hide(logInBox);
       domUpdates.show(dashboard);
       logInForm.reset();
@@ -163,6 +139,32 @@ function updateCheckoutMinimum(event) {
   event.preventDefault();
   checkOutInput.min = dayjs(checkInInput.value).add('1', 'day').format('YYYY-MM-DD')
   checkOutInput.value = checkOutInput.min;
+}
+
+function bringMeHome() {
+  if (newCustomer) {
+    domUpdates.show(dashboard);
+    domUpdates.hide(roomsPool)
+    domUpdates.hide(bookingPreview);
+    domUpdates.hide(bookingContainer);
+    limitDatesInput();
+  }
+}
+
+function logOut() {
+  newCustomer = null;
+  domUpdates.show(logInBox);
+  domUpdates.hide(dashboard);
+  domUpdates.hide(roomsPool)
+  domUpdates.hide(bookingPreview);
+  domUpdates.hide(bookingContainer);
+  limitDatesInput();
+}
+
+function enableTab() {
+  if (event.keyCode === 13) {
+    checkRoomDetails(event)
+  }
 }
 
 //Helper functions
