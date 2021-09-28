@@ -57,7 +57,6 @@ const domUpdates = {
       `
       });
     }
-    
   },
 
   renderBookingPreview(booking) {
