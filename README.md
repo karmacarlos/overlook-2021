@@ -25,7 +25,22 @@ The test results will output to the terminal.
 
 ## Usage and Demonstration
 
-![Hotel City Illustration](https://media.giphy.com/media/X5dsdpxo5P8sNfeRhL/giphy.gif?cid=790b7611376b162560000fe22749ca649bb7ba45b241d647&rid=giphy.gif&ct=g)
+   * The user can log in into the application
+  
+![Screen Shot 2021-10-25 at 6 55 34 AM](https://user-images.githubusercontent.com/81398850/138699868-eb9b387f-e9d0-4c6c-9b94-a6d1ad26dcc9.png)
+
+   * The user can see a dashboard where it can make a multiple days booking
+  
+![Screen Shot 2021-10-25 at 6 56 34 AM](https://user-images.githubusercontent.com/81398850/138700229-b481ecfe-37b8-40c8-91f4-8edba8e58627.png)
+
+   * The user can see all available rooms for those dates and filter them by room type
+  
+![Screen Shot 2021-10-25 at 6 57 10 AM](https://user-images.githubusercontent.com/81398850/138700452-288e9b99-7810-41a8-937c-3094c5c155f6.png)
+
+   * The user can see a booking preview before booking
+   
+![Screen Shot 2021-10-25 at 6 57 25 AM](https://user-images.githubusercontent.com/81398850/138700670-12786512-c699-48d8-ab62-2539f1857e67.png)
+
 
 ## Programming Languages and Dependencies
 
