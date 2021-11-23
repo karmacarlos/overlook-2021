@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karma:wght@400;600&family=Prata&display=swap" rel="stylesheet">
+  <title>City Hotel</title>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="#" id="home">
+        <h1 class="header-logo">City<br>Hotel</h1>
+      </a>
+      <div class="right-container">
+        <ul class="nav__links">
+          <li class="nav__items1" id="logOut"><button>LOG OUT</button></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <section id="mainContainer" class="main-container">
+    <section id="inputBooking" class="main-container__new-booking hidden">
+      <section id="formContainer" class="main-container__new-booking__form">
+        <h2>Book your next stay</h2>
+        <form name="datesInput">
+          <div id="checkInDate" class="checkin-input">
+            <div>
+              <Label for="checkInInput">Check in date:</Label>
+              <input type="date" id="checkInInput" name="trip-start" value="2021-09-25" min="2021-09-20" max="2022-31-12">
+            </div>
+          </div>
+          <div id="checkOutDate" class="checkout-input">
+            <div>
+              <label for="checkOutInput">Check out date:</label>
+              <input type="date" id="checkOutInput" name="trip-ends" value="2021-09-25"  min="2021-09-25" max="2022-31-12">
+            </div>
+          </div>
+            <input type="submit" value="Check Availability" class="submit" id="datesSubmit">
+        </form>
+        <p id="checkoutError" class="log-in-error hidden">Please select a valid checkout date</p>
+        <p class="apology hidden" id="apology">We are deeply sorry but there is no available rooms for these dates, try adjusting the dates.</p>
+      </section>
+      <section id="myBookingBox" class="main-container__new-booking__bookings">
+        <h2>My Bookings</h2>
+        <section id="allBookings" class="booking-list"></section>
+        <h3 id="totalSpent"></h3>
+      </section>
+    </section>
+    <section id="availableRooms" class="main-container__rooms hidden">
+      <section id="roomFeatures" class="main-container__rooms__tags">
+        <form id="roomFeaturesInput" tabindex="0">
+          <input type="checkbox" id="suite" name="tag" value="suite" tabindex="0">
+            <label for="suite" class="label" tabindex="0">Suite</label>
+          <input type="checkbox" id="residentialSuite" name="tag" value="residential suite" tabindex="0">
+            <label for="residentialSuite" tabindex="0">Residential Suite</label>
+          <input type="checkbox" id="singleRoom" name="tag" value="single room" tabindex="0">
+            <label for="singleRoom" tabindex="0">Single Room</label>
+          <input type="checkbox" id="juniorSuite" name="tag" value="junior suite" tabindex="0">
+            <label for="juniorSuite" tabindex="0">Junior Suite</label>         
+        </form>
+      </section>
+      <h2 id="errorMessage1"></h2>
+      <section id="roomDisplay" class="main-container__rooms__pool"></section>
+    </section>
+    <section class="main-container__log-in " id="logInContainer">
+      <section id="logInBox" class="main-container__log-in__box">
+        <form name="log-in" class="log-in-form" id="logInForm">
+          <label for="username">Username</label>
+          <input novalidate type="text" id="username" name="username" placeholder="username">
+          <label for="password">Password</label>
+          <input novalidate type="password" id="password" name=“user-password” placeholder="password">
+          <input type="submit" value="LOG IN" id="logInSubmit">
+        </form>
+        <p id="logInError" class="log-in-error hidden">Incorrect username or password, please try again</p>
+      </section>
+    </section>
+    <section id="roomRender" class="main-container__room-render hidden">
+      <section id="bookingPreview" class="main-container__room-render__room">
+      </section>
+    </section>
+  </section>
+  <script src="bundle.js"></script>
+</body>
+</html>
