@@ -50,15 +50,15 @@ The test results will output to the terminal.
 
 - Solidified understanding and application of asynchronous JS
 - Proficient management of accessibility standards achieving a score of 100 by lighthouse report
-- Proficient use of iterator methods combining 3 data sets to return an user request keeping a performance above 95 by lighthouse report
+- Proficient use of iterator methods combining 3 data sets to return a user request keeping a performance above 95 by lighthouse report
 - Demonstrated solid understanding of OOP by having 4 classes interacting with each other containing all the necessary logic inside.
-- Solid implementation of TDD by writing all test and the implementation later, making sure the functionality of each class performed as planned.
-- Proficient use of Github projects feature including issues to plan an execute project within 1 week
+- Solid implementation of TDD by writing all tests and the implementation later, making sure the functionality of each class performed as planned.
+- Proficient use of Github projects feature including issues to plan and execute the project within 1 week
 - Use of SCSS files to style the application while keeping DRY code
 
 **Challenges**
 
-- On the planning stage it was a challenge to try to anticipate all the different behaviors an properties that my classes needed to fullfil SRP and OOP standards.
+- On the planning stage it was a challenge to try to anticipate all the different behaviors and properties that my classes needed to fulfil SRP and OOP standards.
 - During the implementation it was a challenge to anticipate sad paths for the test suites.
 
 ## Future Additions
